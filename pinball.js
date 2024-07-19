@@ -75,32 +75,6 @@ class Paddle {
 const ball = new Ball(canvas.width / 2, canvas.height - 30, 10, 'white');
 const paddle = new Paddle((canvas.width - 100) / 2, canvas.height - 20, 100, 10, 'white');
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
-        paddle.speed = -7;
-    } else if (event.key === 'ArrowRight') {
-        paddle.speed = 7;
-    }
-});
-
-document.addEventListener('keyup', (event) => {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        paddle.speed = 0;
-    }
-});
-
-function detectCollision() {
-    if (ball.y + ball.radius > paddle.y && ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
-        ball.dy = -ball.dy;
-        score++;
-    }
-}
-
-function drawScore() {
-    ctx.font = '16px Arial';
-    ctx.fillStyle = 'white';
-    ctx.fillText('Score: ' + score, 8, 20);
-}
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
